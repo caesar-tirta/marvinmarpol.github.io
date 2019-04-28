@@ -1,0 +1,296 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Senyumku
+  description: 'TODO: Add Description'
+  contact: {}
+host: example.com
+basePath: /
+securityDefinitions:
+  auth:
+    type: basic
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /authentication/login:
+    post:
+      description: 'TODO: Add Description'
+      summary: /authentication/login
+      tags:
+        - Misc
+      operationId: AuthenticationLoginPost
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/~1authentication~1loginRequest'
+      responses:
+        '200':
+          description: 'success response'
+          headers: {}
+      security:
+        - auth: []
+  /authentication/verifyOtp:
+    post:
+      description: 'TODO: Add Description'
+      summary: /authentication/verifyOtp
+      tags:
+        - Misc
+      operationId: AuthenticationVerifyOtpPost
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/~1authentication~1verifyOtpRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security:
+        - auth: []
+  /applicants/validation/account:
+    post:
+      description: 'TODO: Add Description'
+      summary: /applicants/validation/account
+      tags:
+        - Misc
+      operationId: ApplicantsValidationAccountPost
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/~1applicants~1validation~1accountRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security:
+        - auth: []
+  /applicants/validation/ktp:
+    post:
+      description: 'TODO: Add Description'
+      summary: /applicants/validation/ktp
+      tags:
+        - Misc
+      operationId: ApplicantsValidationKtpPost
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/~1applicants~1validation~1ktpRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security:
+        - auth: []
+  /applicants/contact/feedback:
+    post:
+      description: 'TODO: Add Description'
+      summary: /applicants/contact/feedback
+      tags:
+        - Misc
+      operationId: ApplicantsContactFeedbackPost
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/~1applicants~1contact~1feedbackRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security:
+        - auth: []
+  /applicants/registration/data/10001:
+    get:
+      description: 'TODO: Add Description'
+      summary: /applicants/registration/data/
+      tags:
+        - Misc
+      operationId: ApplicantsRegistrationData10001Get
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security:
+        - auth: []
+  /applicants/status:
+    get:
+      description: 'TODO: Add Description'
+      summary: /applicants/status
+      tags:
+        - Misc
+      operationId: ApplicantsStatusGet
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: registrationid
+          in: query
+          required: true
+          type: integer
+          format: int32
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security:
+        - auth: []
+definitions:
+  /authentication/loginRequest:
+    title: /authentication/loginRequest
+    example:
+      MobilePhone: '+628111922215'
+    type: object
+    properties:
+      MobilePhone:
+        type: string
+    required:
+      - MobilePhone
+  /authentication/verifyOtpRequest:
+    title: /authentication/verifyOtpRequest
+    example:
+      MobilePhone: '+628111922215'
+    type: object
+    properties:
+      MobilePhone:
+        type: string
+    required:
+      - MobilePhone
+  /applicants/validation/accountRequest:
+    title: /applicants/validation/accountRequest
+    example:
+      accountid: 10
+      registrationid: 10001
+      status: true
+    type: object
+    properties:
+      accountid:
+        type: integer
+        format: int32
+      registrationid:
+        type: integer
+        format: int32
+      status:
+        type: boolean
+    required:
+      - accountid
+      - registrationid
+      - status
+  /applicants/validation/ktpRequest:
+    title: /applicants/validation/ktpRequest
+    example:
+      accountid: 10
+      registrationid: 10001
+      status: true
+    type: object
+    properties:
+      accountid:
+        type: integer
+        format: int32
+      registrationid:
+        type: integer
+        format: int32
+      status:
+        type: boolean
+    required:
+      - accountid
+      - registrationid
+      - status
+  /applicants/contact/feedbackRequest:
+    title: /applicants/contact/feedbackRequest
+    example:
+      email: marvinmarpol@yahoo.com
+      registrationid: 1
+      message: owiii
+      page: /account-opening/registration
+    type: object
+    properties:
+      email:
+        type: string
+      registrationid:
+        type: integer
+        format: int32
+      message:
+        type: string
+      page:
+        type: string
+    required:
+      - email
+      - registrationid
+      - message
+      - page
+tags:
+  - name: Misc
+    description: ''
+
