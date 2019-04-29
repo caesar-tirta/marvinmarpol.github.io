@@ -1,296 +1,738 @@
-swagger: '2.0'
+openapi: 3.0.0
 info:
+  title: Senyumku Backend Api Documentation
+  description: ''
+  contact: 
+    email: "marvin.mitchell@amarbank.co.id"
   version: '1.0'
-  title: Senyumku
-  description: 'TODO: Add Description'
-  contact: {}
-host: example.com
-basePath: /
-securityDefinitions:
-  auth:
-    type: basic
-schemes:
-  - http
-consumes:
-  - application/json
-produces:
-  - application/json
+servers:
+- url: https://staging-services-apps-api-internal.senyumku.com
+  variables: {}
 paths:
   /authentication/login:
     post:
-      description: 'TODO: Add Description'
-      summary: /authentication/login
       tags:
-        - Misc
-      operationId: AuthenticationLoginPost
-      deprecated: false
-      produces:
-        - application/json
+      - Misc
+      summary: /authentication/login
+      description: 'POST Security Login Request'
+      operationId: /authentication/login
       parameters:
-        - name: Content-Type
-          in: header
-          required: true
+      - name: Content-Type
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
           type: string
-          description: ''
-        - name: Body
-          in: body
-          required: true
-          description: ''
-          schema:
-            $ref: '#/definitions/~1authentication~1loginRequest'
+          example: application/json
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/~1authentication~1loginRequest'
+            example: '{"MobilePhone":"+628111922215"}'
+        required: true
       responses:
-        '200':
-          description: 'success response'
+        200:
+          description: 'Successful operation'
           headers: {}
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/~1authentication~1loginRequest~1success'
+        400:
+      deprecated: false
       security:
-        - auth: []
+      - httpBasic: []
   /authentication/verifyOtp:
     post:
-      description: 'TODO: Add Description'
+      tags:
+      - Misc
       summary: /authentication/verifyOtp
-      tags:
-        - Misc
-      operationId: AuthenticationVerifyOtpPost
-      deprecated: false
-      produces:
-        - application/json
-      parameters:
-        - name: Content-Type
-          in: header
-          required: true
-          type: string
-          description: ''
-        - name: Body
-          in: body
-          required: true
-          description: ''
-          schema:
-            $ref: '#/definitions/~1authentication~1verifyOtpRequest'
-      responses:
-        '200':
-          description: ''
-          headers: {}
-      security:
-        - auth: []
-  /applicants/validation/account:
-    post:
       description: 'TODO: Add Description'
-      summary: /applicants/validation/account
-      tags:
-        - Misc
-      operationId: ApplicantsValidationAccountPost
-      deprecated: false
-      produces:
-        - application/json
+      operationId: /authentication/verifyotp
       parameters:
-        - name: Content-Type
-          in: header
-          required: true
+      - name: Content-Type
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
           type: string
-          description: ''
-        - name: Body
-          in: body
-          required: true
-          description: ''
-          schema:
-            $ref: '#/definitions/~1applicants~1validation~1accountRequest'
+          example: application/json
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/~1authentication~1verifyOtpRequest'
+            example: '{"registrationid":10004,"tokensms":2218}'
+        required: true
       responses:
-        '200':
+        200:
           description: ''
           headers: {}
+      deprecated: false
       security:
-        - auth: []
+      - httpBasic: []
+  /applicants/registration/data/{REGISTRATION_ID}:
+    get:
+      tags:
+      - Misc
+      summary: /applicants/registration/data/{registration_id}
+      description: 'TODO: Add Description'
+      operationId: /applicants/registration/data/{registrationId}
+      parameters:
+      - name: Content-Type
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: application/json
+      - name: REGISTRATION_ID
+        in: path
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - httpBasic: []
   /applicants/validation/ktp:
     post:
-      description: 'TODO: Add Description'
-      summary: /applicants/validation/ktp
       tags:
-        - Misc
-      operationId: ApplicantsValidationKtpPost
-      deprecated: false
-      produces:
-        - application/json
+      - Misc
+      summary: /applicants/validation/ktp
+      description: 'TODO: Add Description'
+      operationId: /applicants/validation/ktp
       parameters:
-        - name: Content-Type
-          in: header
-          required: true
+      - name: Content-Type
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
           type: string
-          description: ''
-        - name: Body
-          in: body
-          required: true
-          description: ''
-          schema:
-            $ref: '#/definitions/~1applicants~1validation~1ktpRequest'
+          example: application/json
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/~1applicants~1validation~1ktpRequest'
+            example: '{"ktpnumber":"3275123009920001","fullname":"Marvin Mitchell","registrationid":10004}'
+        required: true
       responses:
-        '200':
+        200:
           description: ''
           headers: {}
+      deprecated: false
       security:
-        - auth: []
+      - httpBasic: []
+  /applicants/address/delivery:
+    post:
+      tags:
+      - Misc
+      summary: /applicants/address/delivery
+      description: 'TODO: Add Description'
+      operationId: /applicants/address/delivery
+      parameters:
+      - name: Content-Type
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: application/json
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/~1applicants~1address~1deliveryRequest'
+            example: '{"registrationid":10004,"addresstype":"alamat rumah","address":"Jln Raya Hankam no 18b","rt":"03","rw":"09","province":"JAWA BARAT","city":"BEKASI","district":"PONDOK MELATI","village":"JATIWARNA","postalcode":"17415"}'
+        required: true
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - httpBasic: []
+  /applicants/images/idcard:
+    post:
+      tags:
+      - Misc
+      summary: /applicants/images/idcard
+      description: 'TODO: Add Description'
+      operationId: /applicants/images/idcard
+      parameters:
+      - name: Content-Type
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: application/json
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/~1applicants~1images~1idcardRequest'
+            example: '{"registrationid":10004,"file":"data:image/png;base64,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","step":"REGISTRATION","image_type":"KTP","image_format":"image/png"}'
+        required: true
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - httpBasic: []
+  /applicants/images/selfie:
+    post:
+      tags:
+      - Misc
+      summary: /applicants/images/selfie
+      description: 'TODO: Add Description'
+      operationId: /applicants/images/selfie
+      parameters:
+      - name: Content-Type
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: application/json
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/~1applicants~1images~1selfieRequest'
+            example: '{"registrationid":10004,"file":"data:image/png;base64,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","step":"REGISTRATION","image_type":"KTP","image_format":"image/png"}'
+        required: true
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - httpBasic: []
+  /applicants/images/status/{REGISTRATION_ID}:
+    get:
+      tags:
+      - Misc
+      summary: /applicants/images/status/{registration_id}
+      description: 'TODO: Add Description'
+      operationId: /applicants/images/status/{registrationId}
+      parameters:
+      - name: Content-Type
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: application/json
+      - name: REGISTRATION_ID
+        in: path
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - httpBasic: []
+  /applicants/registration/save:
+    post:
+      tags:
+      - Misc
+      summary: /applicants/registration/save
+      description: 'TODO: Add Description'
+      operationId: /applicants/registration/save
+      parameters:
+      - name: Content-Type
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: application/json
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/~1applicants~1registration~1saveRequest'
+            example: '{"registrationid":10004,"email":"marvinmarpol@gmail.com","education":"D3","religion":"Katolik","mothername":"Eva Rosita","purpose":"Tabungan","relatives":"Sondang","phoneno":"08171679","sourceincome":"Gaji","monthlyincome":"1 - 3 juta","worktype":"tetap","position":"engineer","companyfield":"technology","companyname":"ibm"}'
+        required: true
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - httpBasic: []
+  /public/regions:
+    get:
+      tags:
+      - Misc
+      summary: /public/regions?type={type_region}&id={region_id}
+      description: 'TODO: Add Description'
+      operationId: /public/regions?type={typeRegion}&id={regionId}
+      parameters:
+      - name: type
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: '{{TYPE_REGION}}'
+      - name: id
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: '{{REGION_ID}}'
+      - name: Content-Type
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: application/json
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - httpBasic: []
+  /applicants/validation/account:
+    post:
+      tags:
+      - Misc
+      summary: /applicants/validation/account
+      description: 'TODO: Add Description'
+      operationId: /applicants/validation/account
+      parameters:
+      - name: Content-Type
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: application/json
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/~1applicants~1validation~1accountRequest'
+            example: '{"accountid":10,"registrationid":10001,"status":true}'
+        required: true
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - httpBasic: []
   /applicants/contact/feedback:
     post:
-      description: 'TODO: Add Description'
+      tags:
+      - Misc
       summary: /applicants/contact/feedback
-      tags:
-        - Misc
-      operationId: ApplicantsContactFeedbackPost
-      deprecated: false
-      produces:
-        - application/json
+      description: 'TODO: Add Description'
+      operationId: /applicants/contact/feedback
       parameters:
-        - name: Content-Type
-          in: header
-          required: true
+      - name: Content-Type
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
           type: string
-          description: ''
-        - name: Body
-          in: body
-          required: true
-          description: ''
-          schema:
-            $ref: '#/definitions/~1applicants~1contact~1feedbackRequest'
+          example: application/json
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/~1applicants~1contact~1feedbackRequest'
+            example: '{"email":"marvinmarpol@yahoo.com","registrationid":1,"message":"owiii","page":"/account-opening/registration"}'
+        required: true
       responses:
-        '200':
+        200:
           description: ''
           headers: {}
-      security:
-        - auth: []
-  /applicants/registration/data/10001:
-    get:
-      description: 'TODO: Add Description'
-      summary: /applicants/registration/data/
-      tags:
-        - Misc
-      operationId: ApplicantsRegistrationData10001Get
       deprecated: false
-      produces:
-        - application/json
+      security:
+      - httpBasic: []
+  /coverage:
+    get:
+      tags:
+      - Misc
+      summary: /coverage
+      description: 'TODO: Add Description'
+      operationId: /coverage
       parameters:
-        - name: Content-Type
-          in: header
-          required: true
+      - name: Content-Type
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
           type: string
-          description: ''
+          example: application/json
       responses:
-        '200':
+        200:
           description: ''
           headers: {}
-      security:
-        - auth: []
-  /applicants/status:
-    get:
-      description: 'TODO: Add Description'
-      summary: /applicants/status
-      tags:
-        - Misc
-      operationId: ApplicantsStatusGet
       deprecated: false
-      produces:
-        - application/json
+      security:
+      - httpBasic: []
+  /ping:
+    get:
+      tags:
+      - Misc
+      summary: /ping
+      description: 'TODO: Add Description'
+      operationId: /ping
       parameters:
-        - name: registrationid
-          in: query
-          required: true
+      - name: Content-Type
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: application/json
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - httpBasic: []
+components:
+  schemas:
+    /authentication/loginRequest:
+      title: /authentication/loginRequest
+      required:
+      - MobilePhone
+      type: object
+      properties:
+        MobilePhone:
+          type: string
+      example:
+        MobilePhone: +628111922215
+    /authentication/loginRequest/success:
+      type: object
+      properties:
+        Data: 
+          type: object
+        Time: 
+          type: string
+        registrationid:
+          type: integer
+        refcode:
+          type: string
+      example:
+          Data:
+            registrationid: 10004
+            refcode: 2f12928f34ec
+          Time: 2019-04-29 18:30:07.845578
+        
+    /authentication/verifyOtpRequest:
+      title: /authentication/verifyOtpRequest
+      required:
+      - registrationid
+      - tokensms
+      type: object
+      properties:
+        registrationid:
           type: integer
           format: int32
-          description: ''
-        - name: Content-Type
-          in: header
-          required: true
+        tokensms:
+          type: integer
+          format: int32
+      example:
+        registrationid: 10004
+        tokensms: 2218
+    /applicants/validation/ktpRequest:
+      title: /applicants/validation/ktpRequest
+      required:
+      - ktpnumber
+      - fullname
+      - registrationid
+      type: object
+      properties:
+        ktpnumber:
           type: string
-          description: ''
-      responses:
-        '200':
-          description: ''
-          headers: {}
-      security:
-        - auth: []
-definitions:
-  /authentication/loginRequest:
-    title: /authentication/loginRequest
-    example:
-      MobilePhone: '+628111922215'
-    type: object
-    properties:
-      MobilePhone:
-        type: string
-    required:
-      - MobilePhone
-  /authentication/verifyOtpRequest:
-    title: /authentication/verifyOtpRequest
-    example:
-      MobilePhone: '+628111922215'
-    type: object
-    properties:
-      MobilePhone:
-        type: string
-    required:
-      - MobilePhone
-  /applicants/validation/accountRequest:
-    title: /applicants/validation/accountRequest
-    example:
-      accountid: 10
-      registrationid: 10001
-      status: true
-    type: object
-    properties:
-      accountid:
-        type: integer
-        format: int32
-      registrationid:
-        type: integer
-        format: int32
-      status:
-        type: boolean
-    required:
+        fullname:
+          type: string
+        registrationid:
+          type: integer
+          format: int32
+      example:
+        ktpnumber: 3275123009920001
+        fullname: Marvin Mitchell
+        registrationid: 10004
+    /applicants/address/deliveryRequest:
+      title: /applicants/address/deliveryRequest
+      required:
+      - registrationid
+      - addresstype
+      - address
+      - rt
+      - rw
+      - province
+      - city
+      - district
+      - village
+      - postalcode
+      type: object
+      properties:
+        registrationid:
+          type: integer
+          format: int32
+        addresstype:
+          type: string
+        address:
+          type: string
+        rt:
+          type: string
+        rw:
+          type: string
+        province:
+          type: string
+        city:
+          type: string
+        district:
+          type: string
+        village:
+          type: string
+        postalcode:
+          type: string
+      example:
+        registrationid: 10004
+        addresstype: alamat rumah
+        address: Jln Raya Hankam no 18b
+        rt: 03
+        rw: 09
+        province: JAWA BARAT
+        city: BEKASI
+        district: PONDOK MELATI
+        village: JATIWARNA
+        postalcode: 17415
+    /applicants/images/idcardRequest:
+      title: /applicants/images/idcardRequest
+      required:
+      - registrationid
+      - file
+      - step
+      - image_type
+      - image_format
+      type: object
+      properties:
+        registrationid:
+          type: integer
+          format: int32
+        file:
+          type: string
+        step:
+          type: string
+        image_type:
+          type: string
+        image_format:
+          type: string
+      example:
+        registrationid: 10004
+        file: data:image/png;base64,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
+        step: REGISTRATION
+        image_type: KTP
+        image_format: image/png
+    /applicants/images/selfieRequest:
+      title: /applicants/images/selfieRequest
+      required:
+      - registrationid
+      - file
+      - step
+      - image_type
+      - image_format
+      type: object
+      properties:
+        registrationid:
+          type: integer
+          format: int32
+        file:
+          type: string
+        step:
+          type: string
+        image_type:
+          type: string
+        image_format:
+          type: string
+      example:
+        registrationid: 10004
+        file: data:image/png;base64,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
+        step: REGISTRATION
+        image_type: KTP
+        image_format: image/png
+    /applicants/registration/saveRequest:
+      title: /applicants/registration/saveRequest
+      required:
+      - registrationid
+      - email
+      - education
+      - religion
+      - mothername
+      - purpose
+      - relatives
+      - phoneno
+      - sourceincome
+      - monthlyincome
+      - worktype
+      - position
+      - companyfield
+      - companyname
+      type: object
+      properties:
+        registrationid:
+          type: integer
+          format: int32
+        email:
+          type: string
+        education:
+          type: string
+        religion:
+          type: string
+        mothername:
+          type: string
+        purpose:
+          type: string
+        relatives:
+          type: string
+        phoneno:
+          type: string
+        sourceincome:
+          type: string
+        monthlyincome:
+          type: string
+        worktype:
+          type: string
+        position:
+          type: string
+        companyfield:
+          type: string
+        companyname:
+          type: string
+      example:
+        registrationid: 10004
+        email: marvinmarpol@gmail.com
+        education: D3
+        religion: Katolik
+        mothername: Eva Rosita
+        purpose: Tabungan
+        relatives: Sondang
+        phoneno: 08171679
+        sourceincome: Gaji
+        monthlyincome: 1 - 3 juta
+        worktype: tetap
+        position: engineer
+        companyfield: technology
+        companyname: ibm
+    /applicants/validation/accountRequest:
+      title: /applicants/validation/accountRequest
+      required:
       - accountid
       - registrationid
       - status
-  /applicants/validation/ktpRequest:
-    title: /applicants/validation/ktpRequest
-    example:
-      accountid: 10
-      registrationid: 10001
-      status: true
-    type: object
-    properties:
-      accountid:
-        type: integer
-        format: int32
-      registrationid:
-        type: integer
-        format: int32
-      status:
-        type: boolean
-    required:
-      - accountid
-      - registrationid
-      - status
-  /applicants/contact/feedbackRequest:
-    title: /applicants/contact/feedbackRequest
-    example:
-      email: marvinmarpol@yahoo.com
-      registrationid: 1
-      message: owiii
-      page: /account-opening/registration
-    type: object
-    properties:
-      email:
-        type: string
-      registrationid:
-        type: integer
-        format: int32
-      message:
-        type: string
-      page:
-        type: string
-    required:
+      type: object
+      properties:
+        accountid:
+          type: integer
+          format: int32
+        registrationid:
+          type: integer
+          format: int32
+        status:
+          type: boolean
+      example:
+        accountid: 10
+        registrationid: 10001
+        status: true
+    /applicants/contact/feedbackRequest:
+      title: /applicants/contact/feedbackRequest
+      required:
       - email
       - registrationid
       - message
       - page
+      type: object
+      properties:
+        email:
+          type: string
+        registrationid:
+          type: integer
+          format: int32
+        message:
+          type: string
+        page:
+          type: string
+      example:
+        email: marvinmarpol@yahoo.com
+        registrationid: 1
+        message: owiii
+        page: /account-opening/registration
+  securitySchemes:
+    httpBasic:
+      type: http
+      scheme: basic
+security:
+- httpBasic: []
 tags:
-  - name: Misc
-    description: ''
-
+- name: Misc
+  description: ''
