@@ -13,7 +13,6 @@ paths:
     post:
       tags:
       - Misc
-      summary: /authentication/login
       description: 'POST Security Login Request'
       operationId: /authentication/login
       parameters:
@@ -32,17 +31,49 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/~1authentication~1loginRequest'
-            example: '{"MobilePhone":"+628111922215"}'
         required: true
       responses:
         200:
           description: 'Successful operation'
-          headers: {}
           content:
             application/json:
               schema:
-                  $ref: '#/components/schemas/~1authentication~1loginRequest~1success'
-        400:
+                  $ref: '#/components/schemas/200_HTTP_OK'
+              example:
+                Data:
+                  registrationid: 10004
+                  refcode: 2f12928f34ec
+                Time: '2019-04-29 18:30:07.845578'
+        400 (PARAM_IS_EMPTY):
+          description: 'PARAM_IS_EMPTY'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 6
+                Message: 'PARAM_IS_EMPTY'
+                Time: '2019-04-29 18:30:07.845578'
+        400 (MOBILE_PHONE_NOT_VALID):
+          description: 'MOBILE_PHONE_NOT_VALID'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: x
+                Message: 'MOBILE_PHONE_NOT_VALID'
+                Time: '2019-04-29 18:30:07.845578'
+        401:
+          description: 'UNAUTHORIZED'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 3
+                Message: 'UNAUTHORIZED'
+                Time: '2019-04-29 18:30:07.845578'
       deprecated: false
       security:
       - httpBasic: []
@@ -50,8 +81,7 @@ paths:
     post:
       tags:
       - Misc
-      summary: /authentication/verifyOtp
-      description: 'TODO: Add Description'
+      description: 'Authentication Verify OTP Params'
       operationId: /authentication/verifyotp
       parameters:
       - name: Content-Type
@@ -69,12 +99,48 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/~1authentication~1verifyOtpRequest'
-            example: '{"registrationid":10004,"tokensms":2218}'
         required: true
       responses:
         200:
-          description: ''
-          headers: {}
+          description: 'Successful operation'
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/200_HTTP_OK'
+              example:
+                Data:
+                  message: 'SUCCESS'
+                Time: '2019-04-29 18:30:07.845578'
+        400 (PARAM_IS_EMPTY):
+          description: 'PARAM_IS_EMPTY'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 6
+                Message: 'PARAM_IS_EMPTY'
+                Time: '2019-04-29 18:30:07.845578'
+        400 (TOKEN_NOT_VALID):
+          description: 'TOKEN_NOT_VALID'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: x
+                Message: 'TOKEN_NOT_VALID'
+                Time: '2019-04-29 18:30:07.845578'
+        401:
+          description: 'UNAUTHORIZED'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 3
+                Message: 'UNAUTHORIZED'
+                Time: '2019-04-29 18:30:07.845578'
       deprecated: false
       security:
       - httpBasic: []
@@ -82,8 +148,7 @@ paths:
     get:
       tags:
       - Misc
-      summary: /applicants/registration/data/{registration_id}
-      description: 'TODO: Add Description'
+      description: 'GET Applicants Registration Data Request'
       operationId: /applicants/registration/data/{registrationId}
       parameters:
       - name: Content-Type
@@ -105,8 +170,103 @@ paths:
           type: string
       responses:
         200:
-          description: ''
-          headers: {}
+          description: 'Successful operation'
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/200_HTTP_OK'
+              example:
+                Data:
+                  ktp: '7209071012960001'
+                  fullname: ISHAK IMANUEL LUMIMPAH
+                  religion: null
+                  education: null
+                  email: null
+                  gender: Male
+                  mothername: null
+                  purpose: null
+                  relates:
+                    relatesname: null
+                    relatesphone: null
+                  job:
+                    sourceincome: null
+                    worktype: null
+                    companyfield: null
+                    companyname: null
+                    position: null
+                    monthlyincome: null
+                  addressdomicile:
+                    province: null
+                    city: null
+                    district: null
+                    village: null
+                    rt: null
+                    rw: null
+                    address: null
+                    postalcode: null
+                    addresstype: null
+                  addressKTP:
+                    province: BANTEN
+                    city: KOTA TANGERANG
+                    district: LARANGAN
+                    village: LARANGAN UTARA
+                    rt: '1'
+                    rw: '5'
+                    address: JL. INPRES I NO.14
+                    postalcode: '15154'
+                    addresstype: null
+                  addressdelivery:
+                    province: null
+                    city: null
+                    district: null
+                    village: null
+                    rt: null
+                    rw: null
+                    address: null
+                    postalcode: null
+                    addresstype: null
+                  maritalstatus: BELUM KAWIN
+                  maritalcertificate: ''
+                  birth:
+                    city: BONDOYONG
+                    date: '1996-12-10'
+                  status:
+                    code: 5
+                    message: Valid(Dukcapil)
+                  rejectreason:
+                    code: null
+                    message: null
+                Time: '2019-04-29 18:30:07.845578'
+        400 (PARAM_IS_EMPTY):
+          description: 'PARAM_IS_EMPTY'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 6
+                Message: 'PARAM_IS_EMPTY'
+                Time: '2019-04-29 18:30:07.845578'
+        400 (DATA_NOT_FOUND):
+          description: 'DATA_NOT_FOUND'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 5
+                Message: 'DATA_NOT_FOUND'
+                Time: '2019-04-29 18:30:07.845578'
+        401:
+          description: 'UNAUTHORIZED'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 3
+                Message: 'UNAUTHORIZED'
+                Time: '2019-04-29 18:30:07.845578'
       deprecated: false
       security:
       - httpBasic: []
@@ -114,8 +274,7 @@ paths:
     post:
       tags:
       - Misc
-      summary: /applicants/validation/ktp
-      description: 'TODO: Add Description'
+      description: 'Applicants Validation KTP Params'
       operationId: /applicants/validation/ktp
       parameters:
       - name: Content-Type
@@ -133,12 +292,99 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/~1applicants~1validation~1ktpRequest'
-            example: '{"ktpnumber":"3275123009920001","fullname":"Marvin Mitchell","registrationid":10004}'
         required: true
       responses:
-        200:
-          description: ''
-          headers: {}
+        200 (Accepted):
+          description: 'Successful operation'
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/200_HTTP_OK'
+              example:
+                Data:
+                  message: 'SUCCESS'
+                Time: '2019-04-29 18:30:07.845578'
+        200 (Rejected):
+          description: 'Successful operation (Rejected)'
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/200_HTTP_OK'
+              example:
+                Data:
+                  message: 'Rejected'
+                  rejectionreason: 'APUPPT'
+                Time: '2019-04-29 18:30:07.845578'
+        400 (PARAM_IS_EMPTY):
+          description: 'PARAM_IS_EMPTY'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 6
+                Message: 'PARAM_IS_EMPTY'
+                Time: '2019-04-29 18:30:07.845578'
+        400 (KTP_IS_ALREADY_REGISTERED):
+          description: 'KTP_IS_ALREADY_REGISTERED'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 7
+                Message: 'KTP_IS_ALREADY_REGISTERED'
+                Time: '2019-04-29 18:30:07.845578'
+        400 (KTP_NAME_IS_NOT_MATCH):
+          description: 'KTP_NAME_IS_NOT_MATCH'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 8
+                Message: 'KTP_NAME_IS_NOT_MATCH'
+                Time: '2019-04-29 18:30:07.845578'
+        400 (AGE_NOT_ELIGIBLE):
+          description: 'AGE_NOT_ELIGIBLE'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 9
+                Message: 'AGE_NOT_ELIGIBLE'
+                Time: '2019-04-29 18:30:07.845578'
+        400 (KTP_IN_DHN):
+          description: 'KTP_IN_DHN'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 10
+                Message: 'KTP_IN_DHN'
+                Time: '2019-04-29 18:30:07.845578'
+        400 (KTP_IN_APUPPT):
+          description: 'KTP_IN_APUPPT'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 11
+                Message: 'KTP_IN_APUPPT'
+                Time: '2019-04-29 18:30:07.845578'
+        401 (Unauthorized):
+          description: 'UNAUTHORIZED'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 3
+                Message: 'UNAUTHORIZED'
+                Time: '2019-04-29 18:30:07.845578'
       deprecated: false
       security:
       - httpBasic: []
@@ -458,6 +704,24 @@ paths:
       - httpBasic: []
 components:
   schemas:
+    200_HTTP_OK:
+      properties:
+        Data:
+          type: object
+        Time: 
+          type: string
+    400_BAD_REQUEST:
+      properties:
+        Code: 
+          type: integer
+        Message:
+          type: string
+        Time: 
+          type: string
+    500_INTERNAL_SERVER_ERROR:
+      properties:
+        Message:
+          type: string
     /authentication/loginRequest:
       title: /authentication/loginRequest
       required:
@@ -467,24 +731,7 @@ components:
         MobilePhone:
           type: string
       example:
-        MobilePhone: +628111922215
-    /authentication/loginRequest/success:
-      type: object
-      properties:
-        Data: 
-          type: object
-        Time: 
-          type: string
-        registrationid:
-          type: integer
-        refcode:
-          type: string
-      example:
-          Data:
-            registrationid: 10004
-            refcode: 2f12928f34ec
-          Time: 2019-04-29 18:30:07.845578
-        
+        MobilePhone: '+628111922215'
     /authentication/verifyOtpRequest:
       title: /authentication/verifyOtpRequest
       required:
@@ -517,7 +764,7 @@ components:
           type: integer
           format: int32
       example:
-        ktpnumber: 3275123009920001
+        ktpnumber: '3275123009920001'
         fullname: Marvin Mitchell
         registrationid: 10004
     /applicants/address/deliveryRequest:
