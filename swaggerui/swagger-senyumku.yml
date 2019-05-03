@@ -2,29 +2,29 @@ openapi: 3.0.0
 info:
   title: Senyumku Backend Api Documentation
   description: ''
-  contact: 
-    email: "marvin.mitchell@amarbank.co.id"
+  contact:
+    email: marvin.mitchell@amarbank.co.id
   version: '1.0'
 servers:
-- url: https://staging-services-apps-api-internal.senyumku.com
-  variables: {}
+  - url: 'https://staging-services-apps-api-internal.senyumku.com'
+    variables: {}
 paths:
   /authentication/login:
     post:
       tags:
-      - Misc
-      description: 'POST Security Login Request'
+        - Misc
+      description: POST Security Login Request
       operationId: /authentication/login
       parameters:
-      - name: Content-Type
-        in: header
-        description: ''
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-          example: application/json
+        - name: Content-Type
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: application/json
       requestBody:
         description: ''
         content:
@@ -33,66 +33,66 @@ paths:
               $ref: '#/components/schemas/~1authentication~1loginRequest'
         required: true
       responses:
-        200:
-          description: 'Successful operation'
+        '200':
+          description: Successful operation
           content:
             application/json:
               schema:
-                  $ref: '#/components/schemas/200_HTTP_OK'
+                $ref: '#/components/schemas/200_HTTP_OK'
               example:
                 Data:
                   registrationid: 10004
                   refcode: 2f12928f34ec
                 Time: '2019-04-29 18:30:07.845578'
-        400 (PARAM_IS_EMPTY):
-          description: 'PARAM_IS_EMPTY'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/400_BAD_REQUEST'
-              example:
-                Code: 6
-                Message: 'PARAM_IS_EMPTY'
-                Time: '2019-04-29 18:30:07.845578'
-        400 (MOBILE_PHONE_NOT_VALID):
-          description: 'MOBILE_PHONE_NOT_VALID'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/400_BAD_REQUEST'
-              example:
-                Code: x
-                Message: 'MOBILE_PHONE_NOT_VALID'
-                Time: '2019-04-29 18:30:07.845578'
-        401:
-          description: 'UNAUTHORIZED'
+        '401':
+          description: UNAUTHORIZED
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/400_BAD_REQUEST'
               example:
                 Code: 3
-                Message: 'UNAUTHORIZED'
+                Message: UNAUTHORIZED
+                Time: '2019-04-29 18:30:07.845578'
+        400 (PARAM_IS_EMPTY):
+          description: PARAM_IS_EMPTY
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 6
+                Message: PARAM_IS_EMPTY
+                Time: '2019-04-29 18:30:07.845578'
+        400 (MOBILE_PHONE_NOT_VALID):
+          description: MOBILE_PHONE_NOT_VALID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: x
+                Message: MOBILE_PHONE_NOT_VALID
                 Time: '2019-04-29 18:30:07.845578'
       deprecated: false
       security:
-      - httpBasic: []
+        - httpBasic: []
   /authentication/verifyOtp:
     post:
       tags:
-      - Misc
-      description: 'Authentication Verify OTP Params'
+        - Misc
+      description: Authentication Verify OTP Params
       operationId: /authentication/verifyotp
       parameters:
-      - name: Content-Type
-        in: header
-        description: ''
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-          example: application/json
+        - name: Content-Type
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: application/json
       requestBody:
         description: ''
         content:
@@ -101,80 +101,80 @@ paths:
               $ref: '#/components/schemas/~1authentication~1verifyOtpRequest'
         required: true
       responses:
-        200:
-          description: 'Successful operation'
+        '200':
+          description: Successful operation
           content:
             application/json:
               schema:
-                  $ref: '#/components/schemas/200_HTTP_OK'
+                $ref: '#/components/schemas/200_HTTP_OK'
               example:
                 Data:
-                  message: 'SUCCESS'
+                  message: SUCCESS
                 Time: '2019-04-29 18:30:07.845578'
-        400 (PARAM_IS_EMPTY):
-          description: 'PARAM_IS_EMPTY'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/400_BAD_REQUEST'
-              example:
-                Code: 6
-                Message: 'PARAM_IS_EMPTY'
-                Time: '2019-04-29 18:30:07.845578'
-        400 (TOKEN_NOT_VALID):
-          description: 'TOKEN_NOT_VALID'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/400_BAD_REQUEST'
-              example:
-                Code: x
-                Message: 'TOKEN_NOT_VALID'
-                Time: '2019-04-29 18:30:07.845578'
-        401:
-          description: 'UNAUTHORIZED'
+        '401':
+          description: UNAUTHORIZED
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/400_BAD_REQUEST'
               example:
                 Code: 3
-                Message: 'UNAUTHORIZED'
+                Message: UNAUTHORIZED
                 Time: '2019-04-29 18:30:07.845578'
-      deprecated: false
-      security:
-      - httpBasic: []
-  /applicants/registration/data/{REGISTRATION_ID}:
-    get:
-      tags:
-      - Misc
-      description: 'GET Applicants Registration Data Request'
-      operationId: /applicants/registration/data/{registrationId}
-      parameters:
-      - name: Content-Type
-        in: header
-        description: ''
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-          example: application/json
-      - name: REGISTRATION_ID
-        in: path
-        description: ''
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-      responses:
-        200:
-          description: 'Successful operation'
+        400 (PARAM_IS_EMPTY):
+          description: PARAM_IS_EMPTY
           content:
             application/json:
               schema:
-                  $ref: '#/components/schemas/200_HTTP_OK'
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 6
+                Message: PARAM_IS_EMPTY
+                Time: '2019-04-29 18:30:07.845578'
+        400 (TOKEN_NOT_VALID):
+          description: TOKEN_NOT_VALID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: x
+                Message: TOKEN_NOT_VALID
+                Time: '2019-04-29 18:30:07.845578'
+      deprecated: false
+      security:
+        - httpBasic: []
+  '/applicants/registration/data/{REGISTRATION_ID}':
+    get:
+      tags:
+        - Misc
+      description: GET Applicants Registration Data Request
+      operationId: '/applicants/registration/data/{registrationId}'
+      parameters:
+        - name: Content-Type
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: application/json
+        - name: REGISTRATION_ID
+          in: path
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200_HTTP_OK'
               example:
                 Data:
                   ktp: '7209071012960001'
@@ -237,55 +237,55 @@ paths:
                     code: null
                     message: null
                 Time: '2019-04-29 18:30:07.845578'
-        400 (PARAM_IS_EMPTY):
-          description: 'PARAM_IS_EMPTY'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/400_BAD_REQUEST'
-              example:
-                Code: 6
-                Message: 'PARAM_IS_EMPTY'
-                Time: '2019-04-29 18:30:07.845578'
-        400 (DATA_NOT_FOUND):
-          description: 'DATA_NOT_FOUND'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/400_BAD_REQUEST'
-              example:
-                Code: 5
-                Message: 'DATA_NOT_FOUND'
-                Time: '2019-04-29 18:30:07.845578'
-        401:
-          description: 'UNAUTHORIZED'
+        '401':
+          description: UNAUTHORIZED
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/400_BAD_REQUEST'
               example:
                 Code: 3
-                Message: 'UNAUTHORIZED'
+                Message: UNAUTHORIZED
+                Time: '2019-04-29 18:30:07.845578'
+        400 (PARAM_IS_EMPTY):
+          description: PARAM_IS_EMPTY
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 6
+                Message: PARAM_IS_EMPTY
+                Time: '2019-04-29 18:30:07.845578'
+        400 (DATA_NOT_FOUND):
+          description: DATA_NOT_FOUND
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 5
+                Message: DATA_NOT_FOUND
                 Time: '2019-04-29 18:30:07.845578'
       deprecated: false
       security:
-      - httpBasic: []
+        - httpBasic: []
   /applicants/validation/ktp:
     post:
       tags:
-      - Misc
-      description: 'Applicants Validation KTP Params'
+        - Misc
+      description: Applicants Validation KTP Params
       operationId: /applicants/validation/ktp
       parameters:
-      - name: Content-Type
-        in: header
-        description: ''
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-          example: application/json
+        - name: Content-Type
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: application/json
       requestBody:
         description: ''
         content:
@@ -295,115 +295,115 @@ paths:
         required: true
       responses:
         200 (Accepted):
-          description: 'Successful operation'
+          description: Successful operation
           content:
             application/json:
               schema:
-                  $ref: '#/components/schemas/200_HTTP_OK'
+                $ref: '#/components/schemas/200_HTTP_OK'
               example:
                 Data:
-                  message: 'SUCCESS'
+                  message: SUCCESS
                 Time: '2019-04-29 18:30:07.845578'
         200 (Rejected):
-          description: 'Successful operation (Rejected)'
+          description: Successful operation (Rejected)
           content:
             application/json:
               schema:
-                  $ref: '#/components/schemas/200_HTTP_OK'
+                $ref: '#/components/schemas/200_HTTP_OK'
               example:
                 Data:
-                  message: 'Rejected'
-                  rejectionreason: 'APUPPT'
+                  message: Rejected
+                  rejectionreason: APUPPT
                 Time: '2019-04-29 18:30:07.845578'
         400 (PARAM_IS_EMPTY):
-          description: 'PARAM_IS_EMPTY'
+          description: PARAM_IS_EMPTY
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/400_BAD_REQUEST'
               example:
                 Code: 6
-                Message: 'PARAM_IS_EMPTY'
+                Message: PARAM_IS_EMPTY
                 Time: '2019-04-29 18:30:07.845578'
         400 (KTP_IS_ALREADY_REGISTERED):
-          description: 'KTP_IS_ALREADY_REGISTERED'
+          description: KTP_IS_ALREADY_REGISTERED
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/400_BAD_REQUEST'
               example:
                 Code: 7
-                Message: 'KTP_IS_ALREADY_REGISTERED'
+                Message: KTP_IS_ALREADY_REGISTERED
                 Time: '2019-04-29 18:30:07.845578'
         400 (KTP_NAME_IS_NOT_MATCH):
-          description: 'KTP_NAME_IS_NOT_MATCH'
+          description: KTP_NAME_IS_NOT_MATCH
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/400_BAD_REQUEST'
               example:
                 Code: 8
-                Message: 'KTP_NAME_IS_NOT_MATCH'
+                Message: KTP_NAME_IS_NOT_MATCH
                 Time: '2019-04-29 18:30:07.845578'
         400 (AGE_NOT_ELIGIBLE):
-          description: 'AGE_NOT_ELIGIBLE'
+          description: AGE_NOT_ELIGIBLE
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/400_BAD_REQUEST'
               example:
                 Code: 9
-                Message: 'AGE_NOT_ELIGIBLE'
+                Message: AGE_NOT_ELIGIBLE
                 Time: '2019-04-29 18:30:07.845578'
         400 (KTP_IN_DHN):
-          description: 'KTP_IN_DHN'
+          description: KTP_IN_DHN
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/400_BAD_REQUEST'
               example:
                 Code: 10
-                Message: 'KTP_IN_DHN'
+                Message: KTP_IN_DHN
                 Time: '2019-04-29 18:30:07.845578'
         400 (KTP_IN_APUPPT):
-          description: 'KTP_IN_APUPPT'
+          description: KTP_IN_APUPPT
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/400_BAD_REQUEST'
               example:
                 Code: 11
-                Message: 'KTP_IN_APUPPT'
+                Message: KTP_IN_APUPPT
                 Time: '2019-04-29 18:30:07.845578'
         401 (Unauthorized):
-          description: 'UNAUTHORIZED'
+          description: UNAUTHORIZED
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/400_BAD_REQUEST'
               example:
                 Code: 3
-                Message: 'UNAUTHORIZED'
+                Message: UNAUTHORIZED
                 Time: '2019-04-29 18:30:07.845578'
       deprecated: false
       security:
-      - httpBasic: []
+        - httpBasic: []
   /applicants/address/delivery:
     post:
       tags:
-      - Misc
-      description: 'Applicants Registration New Request'
+        - Misc
+      description: Applicants Registration New Request
       operationId: /applicants/address/delivery
       parameters:
-      - name: Content-Type
-        in: header
-        description: ''
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-          example: application/json
+        - name: Content-Type
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: application/json
       requestBody:
         description: ''
         content:
@@ -412,65 +412,65 @@ paths:
               $ref: '#/components/schemas/~1applicants~1address~1deliveryRequest'
         required: true
       responses:
-        200:
-          description: 'Successful operation'
+        '200':
+          description: Successful operation
           content:
             application/json:
               schema:
-                  $ref: '#/components/schemas/200_HTTP_OK'
+                $ref: '#/components/schemas/200_HTTP_OK'
               example:
                 Data:
-                  message: 'SUCCESS'
+                  message: SUCCESS
                 Time: '2019-04-29 18:30:07.845578'
-        400 (PARAM_IS_EMPTY):
-          description: 'PARAM_IS_EMPTY'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/400_BAD_REQUEST'
-              example:
-                Code: 6
-                Message: 'PARAM_IS_EMPTY'
-                Time: '2019-04-29 18:30:07.845578'
-        400 (OUTSITE_SERVICE_AREA):
-          description: 'OUTSITE_SERVICE_AREA'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/400_BAD_REQUEST'
-              example:
-                Code: 12
-                Message: 'OUTSITE_SERVICE_AREA'
-                Time: '2019-04-29 18:30:07.845578'
-        401:
-          description: 'UNAUTHORIZED'
+        '401':
+          description: UNAUTHORIZED
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/400_BAD_REQUEST'
               example:
                 Code: 3
-                Message: 'UNAUTHORIZED'
+                Message: UNAUTHORIZED
+                Time: '2019-04-29 18:30:07.845578'
+        400 (PARAM_IS_EMPTY):
+          description: PARAM_IS_EMPTY
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 6
+                Message: PARAM_IS_EMPTY
+                Time: '2019-04-29 18:30:07.845578'
+        400 (OUTSITE_SERVICE_AREA):
+          description: OUTSITE_SERVICE_AREA
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 12
+                Message: OUTSITE_SERVICE_AREA
                 Time: '2019-04-29 18:30:07.845578'
       deprecated: false
       security:
-      - httpBasic: []
+        - httpBasic: []
   /applicants/images/idcard:
     post:
       tags:
-      - Misc
-      description: 'POST Applicants Images ID Card'
+        - Misc
+      description: POST Applicants Images ID Card
       operationId: /applicants/images/idcard
       parameters:
-      - name: Content-Type
-        in: header
-        description: ''
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-          example: application/json
+        - name: Content-Type
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: application/json
       requestBody:
         description: ''
         content:
@@ -479,65 +479,65 @@ paths:
               $ref: '#/components/schemas/~1applicants~1images~1idcardRequest'
         required: true
       responses:
-        200:
-          description: 'Successful operation'
+        '200':
+          description: Successful operation
           content:
             application/json:
               schema:
-                  $ref: '#/components/schemas/200_HTTP_OK'
+                $ref: '#/components/schemas/200_HTTP_OK'
               example:
                 Data:
-                  message: 'SUCCESS'
+                  message: SUCCESS
                 Time: '2019-04-29 18:30:07.845578'
-        400 (PARAM_IS_EMPTY):
-          description: 'PARAM_IS_EMPTY'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/400_BAD_REQUEST'
-              example:
-                Code: 6
-                Message: 'PARAM_IS_EMPTY'
-                Time: '2019-04-29 18:30:07.845578'
-        400 (FILE_SIZE_LIMIT):
-          description: 'FILE_SIZE_LIMIT'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/400_BAD_REQUEST'
-              example:
-                Code: x
-                Message: 'FILE_SIZE_LIMIT'
-                Time: '2019-04-29 18:30:07.845578'
-        401:
-          description: 'UNAUTHORIZED'
+        '401':
+          description: UNAUTHORIZED
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/400_BAD_REQUEST'
               example:
                 Code: 3
-                Message: 'UNAUTHORIZED'
+                Message: UNAUTHORIZED
+                Time: '2019-04-29 18:30:07.845578'
+        400 (PARAM_IS_EMPTY):
+          description: PARAM_IS_EMPTY
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 6
+                Message: PARAM_IS_EMPTY
+                Time: '2019-04-29 18:30:07.845578'
+        400 (FILE_SIZE_LIMIT):
+          description: FILE_SIZE_LIMIT
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: x
+                Message: FILE_SIZE_LIMIT
                 Time: '2019-04-29 18:30:07.845578'
       deprecated: false
       security:
-      - httpBasic: []
+        - httpBasic: []
   /applicants/images/selfie:
     post:
       tags:
-      - Misc
-      description: 'POST Applicants Images Selfie Photo'
+        - Misc
+      description: POST Applicants Images Selfie Photo
       operationId: /applicants/images/selfie
       parameters:
-      - name: Content-Type
-        in: header
-        description: ''
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-          example: application/json
+        - name: Content-Type
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: application/json
       requestBody:
         description: ''
         content:
@@ -546,135 +546,135 @@ paths:
               $ref: '#/components/schemas/~1applicants~1images~1selfieRequest'
         required: true
       responses:
-        200:
-          description: 'Successful operation'
+        '200':
+          description: Successful operation
           content:
             application/json:
               schema:
-                  $ref: '#/components/schemas/200_HTTP_OK'
+                $ref: '#/components/schemas/200_HTTP_OK'
               example:
                 Data:
-                  message: 'SUCCESS'
+                  message: SUCCESS
                 Time: '2019-04-29 18:30:07.845578'
-        400 (PARAM_IS_EMPTY):
-          description: 'PARAM_IS_EMPTY'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/400_BAD_REQUEST'
-              example:
-                Code: 6
-                Message: 'PARAM_IS_EMPTY'
-                Time: '2019-04-29 18:30:07.845578'
-        400 (FILE_SIZE_LIMIT):
-          description: 'FILE_SIZE_LIMIT'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/400_BAD_REQUEST'
-              example:
-                Code: x
-                Message: 'FILE_SIZE_LIMIT'
-                Time: '2019-04-29 18:30:07.845578'
-        401:
-          description: 'UNAUTHORIZED'
+        '401':
+          description: UNAUTHORIZED
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/400_BAD_REQUEST'
               example:
                 Code: 3
-                Message: 'UNAUTHORIZED'
+                Message: UNAUTHORIZED
                 Time: '2019-04-29 18:30:07.845578'
-      deprecated: false
-      security:
-      - httpBasic: []
-  /applicants/images/status/{REGISTRATION_ID}:
-    get:
-      tags:
-      - Misc
-      description: 'GET applicants uploaded image status'
-      operationId: /applicants/images/status/{registrationId}
-      parameters:
-      - name: Content-Type
-        in: header
-        description: ''
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-          example: application/json
-      - name: REGISTRATION_ID
-        in: path
-        description: ''
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-      responses:
-        200:
-          description: 'Successful operation'
+        400 (PARAM_IS_EMPTY):
+          description: PARAM_IS_EMPTY
           content:
             application/json:
               schema:
-                  $ref: '#/components/schemas/200_HTTP_OK'
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 6
+                Message: PARAM_IS_EMPTY
+                Time: '2019-04-29 18:30:07.845578'
+        400 (FILE_SIZE_LIMIT):
+          description: FILE_SIZE_LIMIT
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: x
+                Message: FILE_SIZE_LIMIT
+                Time: '2019-04-29 18:30:07.845578'
+      deprecated: false
+      security:
+        - httpBasic: []
+  '/applicants/images/status/{REGISTRATION_ID}':
+    get:
+      tags:
+        - Misc
+      description: GET applicants uploaded image status
+      operationId: '/applicants/images/status/{registrationId}'
+      parameters:
+        - name: Content-Type
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: application/json
+        - name: REGISTRATION_ID
+          in: path
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200_HTTP_OK'
               example:
                 Data:
-                  registrationId : 10004
+                  registrationId: 10004
                   idCard: false
                   selfie: true
                 Time: '2019-04-29 18:30:07.845578'
-        400 (PARAM_IS_EMPTY):
-          description: 'PARAM_IS_EMPTY'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/400_BAD_REQUEST'
-              example:
-                Code: 6
-                Message: 'PARAM_IS_EMPTY'
-                Time: '2019-04-29 18:30:07.845578'
-        400 (FILE_SIZE_LIMIT):
-          description: 'FILE_SIZE_LIMIT'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/400_BAD_REQUEST'
-              example:
-                Code: x
-                Message: 'FILE_SIZE_LIMIT'
-                Time: '2019-04-29 18:30:07.845578'
-        401:
-          description: 'UNAUTHORIZED'
+        '401':
+          description: UNAUTHORIZED
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/400_BAD_REQUEST'
               example:
                 Code: 3
-                Message: 'UNAUTHORIZED'
+                Message: UNAUTHORIZED
+                Time: '2019-04-29 18:30:07.845578'
+        400 (PARAM_IS_EMPTY):
+          description: PARAM_IS_EMPTY
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 6
+                Message: PARAM_IS_EMPTY
+                Time: '2019-04-29 18:30:07.845578'
+        400 (FILE_SIZE_LIMIT):
+          description: FILE_SIZE_LIMIT
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: x
+                Message: FILE_SIZE_LIMIT
                 Time: '2019-04-29 18:30:07.845578'
       deprecated: false
       security:
-      - httpBasic: []
+        - httpBasic: []
   /applicants/registration/save:
     post:
       tags:
-      - Misc
-      description: 'POST Applicants Registration New Request'
+        - Misc
+      description: POST Applicants Registration New Request
       operationId: /applicants/registration/save
       parameters:
-      - name: Content-Type
-        in: header
-        description: ''
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-          example: application/json
+        - name: Content-Type
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: application/json
       requestBody:
         description: ''
         content:
@@ -683,137 +683,137 @@ paths:
               $ref: '#/components/schemas/~1applicants~1registration~1saveRequest'
         required: true
       responses:
-        200:
-          description: 'Successful operation'
+        '200':
+          description: Successful operation
           content:
             application/json:
               schema:
-                  $ref: '#/components/schemas/200_HTTP_OK'
+                $ref: '#/components/schemas/200_HTTP_OK'
               example:
                 Data:
-                  registrationId : 10004
+                  registrationId: 10004
                   idCard: false
                   selfie: true
                 Time: '2019-04-29 18:30:07.845578'
+        '401':
+          description: UNAUTHORIZED
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 3
+                Message: UNAUTHORIZED
+                Time: '2019-04-29 18:30:07.845578'
         400 (PARAM_IS_EMPTY):
-          description: 'PARAM_IS_EMPTY'
+          description: PARAM_IS_EMPTY
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/400_BAD_REQUEST'
               example:
                 Code: 6
-                Message: 'PARAM_IS_EMPTY'
+                Message: PARAM_IS_EMPTY
                 Time: '2019-04-29 18:30:07.845578'
         400 (FILE_SIZE_LIMIT):
-          description: 'FILE_SIZE_LIMIT'
+          description: FILE_SIZE_LIMIT
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/400_BAD_REQUEST'
               example:
                 Code: x
-                Message: 'FILE_SIZE_LIMIT'
+                Message: FILE_SIZE_LIMIT
                 Time: '2019-04-29 18:30:07.845578'
-        401:
-          description: 'UNAUTHORIZED'
+      deprecated: false
+      security:
+        - httpBasic: []
+  /public/regions:
+    get:
+      tags:
+        - Misc
+      description: GET Region Data
+      operationId: '/public/regions?type={typeRegion}&id={regionId}'
+      parameters:
+        - name: type
+          in: query
+          description: ''
+          required: true
+          style: form
+          explode: true
+          schema:
+            type: string
+            example: '{{TYPE_REGION}}'
+        - name: id
+          in: query
+          description: ''
+          required: true
+          style: form
+          explode: true
+          schema:
+            type: string
+            example: '{{REGION_ID}}'
+        - name: Content-Type
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: application/json
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200_HTTP_OK'
+              example:
+                Data:
+                  registrationId: 10004
+                  idCard: false
+                  selfie: true
+                Time: '2019-04-29 18:30:07.845578'
+        '401':
+          description: UNAUTHORIZED
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/400_BAD_REQUEST'
               example:
                 Code: 3
-                Message: 'UNAUTHORIZED'
-                Time: '2019-04-29 18:30:07.845578'
-      deprecated: false
-      security:
-      - httpBasic: []
-  /public/regions:
-    get:
-      tags:
-      - Misc
-      description: 'GET Region Data'
-      operationId: /public/regions?type={typeRegion}&id={regionId}
-      parameters:
-      - name: type
-        in: query
-        description: ''
-        required: true
-        style: form
-        explode: true
-        schema:
-          type: string
-          example: '{{TYPE_REGION}}'
-      - name: id
-        in: query
-        description: ''
-        required: true
-        style: form
-        explode: true
-        schema:
-          type: string
-          example: '{{REGION_ID}}'
-      - name: Content-Type
-        in: header
-        description: ''
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-          example: application/json
-      responses:
-        200:
-          description: 'Successful operation'
-          content:
-            application/json:
-              schema:
-                  $ref: '#/components/schemas/200_HTTP_OK'
-              example:
-                Data:
-                  registrationId : 10004
-                  idCard: false
-                  selfie: true
+                Message: UNAUTHORIZED
                 Time: '2019-04-29 18:30:07.845578'
         400 (PARAM_IS_EMPTY):
-          description: 'PARAM_IS_EMPTY'
+          description: PARAM_IS_EMPTY
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/400_BAD_REQUEST'
               example:
                 Code: 6
-                Message: 'PARAM_IS_EMPTY'
-                Time: '2019-04-29 18:30:07.845578'
-        401:
-          description: 'UNAUTHORIZED'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/400_BAD_REQUEST'
-              example:
-                Code: 3
-                Message: 'UNAUTHORIZED'
+                Message: PARAM_IS_EMPTY
                 Time: '2019-04-29 18:30:07.845578'
       deprecated: false
       security:
-      - httpBasic: []
+        - httpBasic: []
   /applicants/validation/account:
     post:
       tags:
-      - Misc
-      description: 'POST Applicants Validation'
+        - Misc
+      description: POST Applicants Validation
       operationId: /applicants/validation/account
       parameters:
-      - name: Content-Type
-        in: header
-        description: ''
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-          example: application/json
+        - name: Content-Type
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: application/json
       requestBody:
         description: ''
         content:
@@ -822,77 +822,77 @@ paths:
               $ref: '#/components/schemas/~1applicants~1validation~1accountRequest'
         required: true
       responses:
-        200:
-          description: 'Successful operation'
+        '200':
+          description: Successful operation
           content:
             application/json:
               schema:
-                  $ref: '#/components/schemas/200_HTTP_OK'
+                $ref: '#/components/schemas/200_HTTP_OK'
               example:
                 Data:
-                  registrationId : 10004
+                  registrationId: 10004
                   idCard: false
                   selfie: true
                 Time: '2019-04-29 18:30:07.845578'
-        400 (PARAM_IS_EMPTY):
-          description: 'PARAM_IS_EMPTY'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/400_BAD_REQUEST'
-              example:
-                Code: 6
-                Message: 'PARAM_IS_EMPTY'
-                Time: '2019-04-29 18:30:07.845578'
-        400 (DATA_NOT_FOUND):
-          description: 'DATA_NOT_FOUND'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/400_BAD_REQUEST'
-              example:
-                Code: 5
-                Message: 'DATA_NOT_FOUND'
-                Time: '2019-04-29 18:30:07.845578'
-        400 (DOES_NOT_HAVE_AMAR_ACCOUNT):
-          description: 'DOES_NOT_HAVE_AMAR_ACCOUNT'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/400_BAD_REQUEST'
-              example:
-                Code: 29
-                Message: 'DOES_NOT_HAVE_AMAR_ACCOUNT'
-                Time: '2019-04-29 18:30:07.845578'
-        401:
-          description: 'UNAUTHORIZED'
+        '401':
+          description: UNAUTHORIZED
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/400_BAD_REQUEST'
               example:
                 Code: 3
-                Message: 'UNAUTHORIZED'
+                Message: UNAUTHORIZED
+                Time: '2019-04-29 18:30:07.845578'
+        400 (PARAM_IS_EMPTY):
+          description: PARAM_IS_EMPTY
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 6
+                Message: PARAM_IS_EMPTY
+                Time: '2019-04-29 18:30:07.845578'
+        400 (DATA_NOT_FOUND):
+          description: DATA_NOT_FOUND
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 5
+                Message: DATA_NOT_FOUND
+                Time: '2019-04-29 18:30:07.845578'
+        400 (DOES_NOT_HAVE_AMAR_ACCOUNT):
+          description: DOES_NOT_HAVE_AMAR_ACCOUNT
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 29
+                Message: DOES_NOT_HAVE_AMAR_ACCOUNT
                 Time: '2019-04-29 18:30:07.845578'
       deprecated: false
       security:
-      - httpBasic: []
+        - httpBasic: []
   /applicants/contact/feedback:
     post:
       tags:
-      - Misc
-      description: 'POST Update customers agreement date'
+        - Misc
+      description: POST Update customers agreement date
       operationId: /applicants/contact/feedback
       parameters:
-      - name: Content-Type
-        in: header
-        description: ''
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-          example: application/json
+        - name: Content-Type
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: application/json
       requestBody:
         description: ''
         content:
@@ -901,135 +901,133 @@ paths:
               $ref: '#/components/schemas/~1applicants~1contact~1feedbackRequest'
         required: true
       responses:
-        200:
-          description: 'Successful operation'
+        '200':
+          description: Successful operation
           content:
             application/json:
               schema:
-                  $ref: '#/components/schemas/200_HTTP_OK'
+                $ref: '#/components/schemas/200_HTTP_OK'
               example:
                 Data:
-                  registrationId : 10004
+                  registrationId: 10004
                   idCard: false
                   selfie: true
                 Time: '2019-04-29 18:30:07.845578'
-        400 (PARAM_IS_EMPTY):
-          description: 'PARAM_IS_EMPTY'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/400_BAD_REQUEST'
-              example:
-                Code: 6
-                Message: 'PARAM_IS_EMPTY'
-                Time: '2019-04-29 18:30:07.845578'
-        400 (EMAIL_NOT_VALID):
-          description: 'EMAIL_NOT_VALID'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/400_BAD_REQUEST'
-              example:
-                Code: 14
-                Message: 'EMAIL_NOT_VALID'
-                Time: '2019-04-29 18:30:07.845578'
-        401:
-          description: 'UNAUTHORIZED'
+        '401':
+          description: UNAUTHORIZED
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/400_BAD_REQUEST'
               example:
                 Code: 3
-                Message: 'UNAUTHORIZED'
+                Message: UNAUTHORIZED
+                Time: '2019-04-29 18:30:07.845578'
+        400 (PARAM_IS_EMPTY):
+          description: PARAM_IS_EMPTY
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 6
+                Message: PARAM_IS_EMPTY
+                Time: '2019-04-29 18:30:07.845578'
+        400 (EMAIL_NOT_VALID):
+          description: EMAIL_NOT_VALID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+              example:
+                Code: 14
+                Message: EMAIL_NOT_VALID
                 Time: '2019-04-29 18:30:07.845578'
       deprecated: false
       security:
-      - httpBasic: []
+        - httpBasic: []
   /coverage:
     get:
       tags:
-      - Misc
+        - Misc
       summary: /coverage
-      description: 'GET coverage result'
+      description: GET coverage result
       operationId: /coverage
       parameters:
-      - name: Content-Type
-        in: header
-        description: ''
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-          example: application/json
+        - name: Content-Type
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: application/json
       responses:
-        200:
-          description: 'Successful operation'
+        '200':
+          description: Successful operation
           content:
             application/json:
               schema:
-                  $ref: '#/components/schemas/200_HTTP_OK'
-              example:
-                '<!DOCTYPE html><html>...</html>'
+                $ref: '#/components/schemas/200_HTTP_OK'
+              example: <!DOCTYPE html><html>...</html>
         200 (FILE_NOT_FOUND):
-          description: 'Successful operation (FILE_NOT_FOUND)'
+          description: Successful operation (FILE_NOT_FOUND)
           content:
             application/json:
               schema:
-                  $ref: '#/components/schemas/200_HTTP_OK'
-              example:
-                'open cover.html: no such file or directory'
+                $ref: '#/components/schemas/200_HTTP_OK'
+              example: 'open cover.html: no such file or directory'
       deprecated: false
       security:
-      - httpBasic: []
+        - httpBasic: []
   /ping:
     get:
       tags:
-      - Misc
-      description: 'GET Ping Test'
+        - Misc
+      description: GET Ping Test
       operationId: /ping
       parameters:
-      - name: Content-Type
-        in: header
-        description: ''
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-          example: application/json
+        - name: Content-Type
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: application/json
       responses:
-        200:
-          description: 'Successful operation'
+        '200':
+          description: Successful operation
           content:
             application/json:
               schema:
-                  $ref: '#/components/schemas/200_HTTP_OK'
+                $ref: '#/components/schemas/200_HTTP_OK'
               example:
                 Data:
-                  DatabaseStatus : 'DATABASE_CONNECTED'
-                  WavecellStatus: 'SUCCESS'
+                  DatabaseStatus: DATABASE_CONNECTED
+                  WavecellStatus: SUCCESS
                   DukcapilStatus: ''
                 Time: '2019-04-29 18:30:07.845578'
       deprecated: false
       security:
-      - httpBasic: []
+        - httpBasic: []
 components:
   schemas:
     200_HTTP_OK:
       properties:
         Data:
           type: object
-        Time: 
+        Time:
           type: string
     400_BAD_REQUEST:
       properties:
-        Code: 
+        Code:
           type: integer
         Message:
           type: string
-        Time: 
+        Time:
           type: string
     500_INTERNAL_SERVER_ERROR:
       properties:
@@ -1038,7 +1036,7 @@ components:
     /authentication/loginRequest:
       title: /authentication/loginRequest
       required:
-      - MobilePhone
+        - MobilePhone
       type: object
       properties:
         MobilePhone:
@@ -1048,25 +1046,23 @@ components:
     /authentication/verifyOtpRequest:
       title: /authentication/verifyOtpRequest
       required:
-      - registrationid
-      - tokensms
+        - registrationid
+        - tokensms
       type: object
       properties:
         registrationid:
           type: integer
-          format: int32
         tokensms:
           type: integer
-          format: int32
       example:
         registrationid: 10004
         tokensms: 2218
     /applicants/validation/ktpRequest:
       title: /applicants/validation/ktpRequest
       required:
-      - ktpnumber
-      - fullname
-      - registrationid
+        - ktpnumber
+        - fullname
+        - registrationid
       type: object
       properties:
         ktpnumber:
@@ -1075,7 +1071,6 @@ components:
           type: string
         registrationid:
           type: integer
-          format: int32
       example:
         ktpnumber: '3275123009920001'
         fullname: Marvin Mitchell
@@ -1083,21 +1078,20 @@ components:
     /applicants/address/deliveryRequest:
       title: /applicants/address/deliveryRequest
       required:
-      - registrationid
-      - addresstype
-      - address
-      - rt
-      - rw
-      - province
-      - city
-      - district
-      - village
-      - postalcode
+        - registrationid
+        - addresstype
+        - address
+        - rt
+        - rw
+        - province
+        - city
+        - district
+        - village
+        - postalcode
       type: object
       properties:
         registrationid:
           type: integer
-          format: int32
         addresstype:
           type: string
         address:
@@ -1120,7 +1114,7 @@ components:
         registrationid: 10004
         addresstype: alamat rumah
         address: Jln Raya Hankam no 18b
-        rt: 03
+        rt: 3
         rw: 09
         province: JAWA BARAT
         city: BEKASI
@@ -1130,16 +1124,15 @@ components:
     /applicants/images/idcardRequest:
       title: /applicants/images/idcardRequest
       required:
-      - registrationid
-      - file
-      - step
-      - image_type
-      - image_format
+        - registrationid
+        - file
+        - step
+        - image_type
+        - image_format
       type: object
       properties:
         registrationid:
           type: integer
-          format: int32
         file:
           type: string
         step:
@@ -1150,23 +1143,23 @@ components:
           type: string
       example:
         registrationid: 10004
-        file: data:image/png;base64,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
+        file: >-
+          data:image/png;base64,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
         step: REGISTRATION
         image_type: KTP
         image_format: image/png
     /applicants/images/selfieRequest:
       title: /applicants/images/selfieRequest
       required:
-      - registrationid
-      - file
-      - step
-      - image_type
-      - image_format
+        - registrationid
+        - file
+        - step
+        - image_type
+        - image_format
       type: object
       properties:
         registrationid:
           type: integer
-          format: int32
         file:
           type: string
         step:
@@ -1177,32 +1170,32 @@ components:
           type: string
       example:
         registrationid: 10004
-        file: data:image/png;base64,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
+        file: >-
+          data:image/png;base64,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
         step: REGISTRATION
         image_type: KTP
         image_format: image/png
     /applicants/registration/saveRequest:
       title: /applicants/registration/saveRequest
       required:
-      - registrationid
-      - email
-      - education
-      - religion
-      - mothername
-      - purpose
-      - relatives
-      - phoneno
-      - sourceincome
-      - monthlyincome
-      - worktype
-      - position
-      - companyfield
-      - companyname
+        - registrationid
+        - email
+        - education
+        - religion
+        - mothername
+        - purpose
+        - relatives
+        - phoneno
+        - sourceincome
+        - monthlyincome
+        - worktype
+        - position
+        - companyfield
+        - companyname
       type: object
       properties:
         registrationid:
           type: integer
-          format: int32
         email:
           type: string
         education:
@@ -1247,17 +1240,15 @@ components:
     /applicants/validation/accountRequest:
       title: /applicants/validation/accountRequest
       required:
-      - accountid
-      - registrationid
-      - status
+        - accountid
+        - registrationid
+        - status
       type: object
       properties:
         accountid:
           type: integer
-          format: int32
         registrationid:
           type: integer
-          format: int32
         status:
           type: boolean
       example:
@@ -1267,32 +1258,31 @@ components:
     /applicants/contact/feedbackRequest:
       title: /applicants/contact/feedbackRequest
       required:
-      - email
-      - registrationid
-      - message
-      - page
+        - message
       type: object
       properties:
         email:
           type: string
         registrationid:
           type: integer
-          format: int32
         message:
           type: string
         page:
+          type: string
+        uuid:
           type: string
       example:
         email: marvinmarpol@yahoo.com
         registrationid: 1
         message: owiii
         page: /account-opening/registration
+        uuid: "1a2b-a44d-112a-aahj"
   securitySchemes:
     httpBasic:
       type: http
       scheme: basic
 security:
-- httpBasic: []
+  - httpBasic: []
 tags:
-- name: Misc
-  description: ''
+  - name: Misc
+    description: ''
