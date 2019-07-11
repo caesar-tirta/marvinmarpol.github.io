@@ -1,0 +1,45 @@
+{
+	"info": {
+		"_postman_id": "d957e8a6-364e-48c7-b1ab-577807ecf1da",
+		"name": "dukcapil",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://172.16.160.128:8000/dukcapil/get_json/BANK_AMAR/CALL_NIK",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nik\": \"3276054903960012\",\n\t\"user_id\": \"4903171201811141Bank_Amar\",\n\t\"password\": \"AmaR2018\"\n}"
+				},
+				"url": {
+					"raw": "http://172.16.160.128:8000/dukcapil/get_json/BANK_AMAR/CALL_NIK",
+					"protocol": "http",
+					"host": [
+						"172",
+						"16",
+						"160",
+						"128"
+					],
+					"port": "8000",
+					"path": [
+						"dukcapil",
+						"get_json",
+						"BANK_AMAR",
+						"CALL_NIK"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
