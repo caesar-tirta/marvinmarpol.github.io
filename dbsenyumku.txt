@@ -24,3 +24,12 @@ production
 rm-d9jsi9jtmsm6cw624oo.pgsql.ap-southeast-5.rds.aliyuncs.com:3432
 prod_satd_api
 OTgyMGU0OTkxNWExMDE1NmExYWZjMTQz
+
+
+
+tnk-internal
+
+production
+public-tnk-prod.pgsql.ap-southeast-5.rds.aliyuncs.com:3432
+prod_tunaiku
+NGVkZDBmOTY1

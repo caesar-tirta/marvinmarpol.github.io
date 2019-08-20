@@ -1,0 +1,409 @@
+{
+	"info": {
+		"_postman_id": "29fed4b5-6b85-4233-9ae2-b6d78b1fc5ec",
+		"name": "CRM_VIDEO_MODULES_AUGUST_5_2019",
+		"description": "tunaiku",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login CRM",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "68e57318-b8ab-4edf-8360-8a24d8de1bf2",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"uservideo\",\n\t\"password\": \"adminpassword\"\n}"
+				},
+				"url": {
+					"raw": "{{HOST}}/login",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "KYC Video Bucket List",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Session",
+						"value": "c205c5b5-bfa9-46bc-8ff1-7b29a9a8db51",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"filter\": {\n\t\t\"day\": 100,\n\t\t\"keyword\": \"\"\n\t},\n\t\"page\": 1,\n\t\"total\": 500\n}"
+				},
+				"url": {
+					"raw": "{{HOST}}/kyc/video/list",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"kyc",
+						"video",
+						"list"
+					],
+					"query": [
+						{
+							"key": "session",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "KYC Video Get Detail ",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Session",
+						"value": "df687b5c-b491-4504-965d-5681450935b5",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOST}}/kyc/video/detail/10000076?",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"kyc",
+						"video",
+						"detail",
+						"10000076"
+					],
+					"query": [
+						{
+							"key": "session",
+							"value": "3f091cee-d488-43e6-a1dc-294ed6931edd",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Change URL param with request ID"
+			},
+			"response": []
+		},
+		{
+			"name": "KYC Video Get Detail  verification",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Session",
+						"type": "text",
+						"value": "c205c5b5-bfa9-46bc-8ff1-7b29a9a8db51"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOST}}/kyc/verification/detail/143?",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"kyc",
+						"verification",
+						"detail",
+						"143"
+					],
+					"query": [
+						{
+							"key": "session",
+							"value": "3f091cee-d488-43e6-a1dc-294ed6931edd",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Change URL param with request ID"
+			},
+			"response": []
+		},
+		{
+			"name": "KYC Video Submit Address",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Session",
+						"value": "d1b2665b-7d30-428d-ba44-2a17b4d0be02",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"addresstype\": 1,\n\t\"hometype\":\"kantor\",\n    \"address\": \"Jln Raya Hankam no 18cc\",\n\t\"rt\":\"001\",\n\t\"rw\":\"001\",\n\t\"province\":\"BANTEN\",\n\t\"city\":\"KOTA TANGERANG\",\n\t\"district\":\"SUNGAI KAKAP\",\n\t\"village\":\"SUNGAI KAKAP DESA\",\n    \"postalcode\": \"78381\"\n}"
+				},
+				"url": {
+					"raw": "{{HOST}}/kyc/video/submit/address/76",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"kyc",
+						"video",
+						"submit",
+						"address",
+						"76"
+					]
+				},
+				"description": "Change URL param with request ID"
+			},
+			"response": []
+		},
+		{
+			"name": "KYC Video Submit Image Selfie and KTP",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Session",
+						"value": "c205c5b5-bfa9-46bc-8ff1-7b29a9a8db51",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"base64_image_ktp\": \"https://i.kym-cdn.com/entries/icons/original/000/000/091/TrollFace.jpg\",\n\t\"base64_image_selfie\": \"https://i.kym-cdn.com/entries/icons/original/000/000/091/TrollFace.jpg\",\n\t\"request_id\": 141,\n\t\"notes\": \"woi\"\n}"
+				},
+				"url": {
+					"raw": "{{HOST}}/kyc/video/submit/images",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"kyc",
+						"video",
+						"submit",
+						"images"
+					]
+				},
+				"description": "Change URL param with request ID"
+			},
+			"response": []
+		},
+		{
+			"name": "KYC Verification Bucket List",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Session",
+						"value": "f6e5491c-0efb-49b6-8e04-a3fc2fe4eb2c",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"filter\": {\n\t\t\"day\": 0,\n\t\t\"keyword\": \"\"\n\t},\n\t\"page\": 1,\n\t\"total\": 10\n}"
+				},
+				"url": {
+					"raw": "{{HOST}}/kyc/verification/list",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"kyc",
+						"verification",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "KYC Call History List",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Session",
+						"value": "f6e5491c-0efb-49b6-8e04-a3fc2fe4eb2c",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "page",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "total",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "type_call",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{HOST}}/call/history/34",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"call",
+						"history",
+						"34"
+					]
+				},
+				"description": "Change URL param with customer ID"
+			},
+			"response": []
+		},
+		{
+			"name": "KYC Submit Call History",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Session",
+						"value": "f6e5491c-0efb-49b6-8e04-a3fc2fe4eb2c",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"type_call\": 1,\n\t\"type_action\": 0,\n\t\"user_id\": 3,\n\t\"customer_id\": 34,\n\t\"notes\": \"TESR\",\n\t\"request_id\": 76\n}"
+				},
+				"url": {
+					"raw": "{{HOST}}/call/history/submit",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"call",
+						"history",
+						"submit"
+					]
+				},
+				"description": "Change URL param with customer ID"
+			},
+			"response": []
+		},
+		{
+			"name": "/kyc/images/list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Session",
+						"type": "text",
+						"value": "3c4ecba4-4b34-41b6-bbd0-97c49cb935e9"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOST}}/kyc/images/list/1563991001847479017",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"kyc",
+						"images",
+						"list",
+						"1563991001847479017"
+					]
+				},
+				"description": "Create New IAM User"
+			},
+			"response": []
+		}
+	]
+}
