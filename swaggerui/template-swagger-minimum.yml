@@ -1,0 +1,116 @@
+openapi: 3.0.0
+info:
+  title: Api Documentation
+  description: ''
+  contact: {}
+  version: '1.0'
+servers:
+  - url: 'https://staging-services-crm-api.senyumku.com'
+    variables: {}
+    description: staging
+  - url: 'https://services-crm-api.senyumku.com'
+    variables: {}
+    description: production
+
+
+paths:
+  /login:
+    post:
+      tags:
+        - Misc
+      summary: Login CRM
+      description: 'TODO: Add Description'
+      operationId: LoginCrm
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginCRMRequest'
+            example:
+              username: uservideo
+              password: adminpassword
+        required: true
+      responses:
+        '200':
+          description: successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200_HTTP_OK'
+              example:
+                Data: e5737d3d-203e-4f4f-95e7-2a041ec416a8
+                Time: '2019-08-21 10:14:04'
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+        '440':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/440_UNAUTHORIZED'
+  
+
+components:
+  schemas:
+    200_HTTP_OK:
+      properties:
+        Data:
+          type: object
+        Time:
+          type: string
+      example:
+        Data: OK
+        Time: '2019-08-21 10:14:04'
+    400_BAD_REQUEST:
+      properties:
+        Code:
+          type: integer
+        Message:
+          type: string
+        Time:
+          type: string
+      example:
+        Code: 6
+        Message: PARAM_IS_EMPTY
+        Time: '2019-08-21 10:14:04'
+    440_UNAUTHORIZED:
+      properties:
+        Code:
+          type: integer
+        Message:
+          type: string
+        Time:
+          type: string
+      example:
+        Code: 3
+        Message: UNAUTHORIZED
+        Time: '2019-08-21 10:14:04'
+    LoginCRMRequest:
+      title: LoginCRMRequest
+      required:
+        - username
+        - password
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      example:
+        username: uservideo
+        password: adminpassword
+  securitySchemes:
+    httpBasic:
+      type: http
+      scheme: basic
+security:
+  - httpBasic: []
+tags:
+  - name: Misc
+    description: ''

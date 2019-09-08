@@ -1,0 +1,726 @@
+openapi: 3.0.0
+info:
+  title: Api Documentation
+  description: ''
+  contact: {}
+  version: '1.0'
+servers:
+  - url: 'https://staging-services-crm-api.senyumku.com'
+    variables: {}
+    description: staging
+  - url: 'https://services-crm-api.senyumku.com'
+    variables: {}
+    description: production
+paths:
+  /login:
+    post:
+      tags:
+        - Misc
+      summary: Login CRM
+      description: 'TODO: Add Description'
+      operationId: LoginCrm
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginCRMRequest'
+            example:
+              username: uservideo
+              password: adminpassword
+        required: true
+      responses:
+        '200':
+          description: successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200_HTTP_OK'
+              example:
+                Data: e5737d3d-203e-4f4f-95e7-2a041ec416a8
+                Time: '2019-08-21 10:14:04'
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+        '440':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/440_UNAUTHORIZED'
+  /kyc/video/list:
+    post:
+      tags:
+        - Misc
+      summary: KYC Video Bucket List
+      description: 'TODO: Add Description'
+      operationId: KycVideoBucketList
+      parameters:
+        - name: Session
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: c205c5b5-bfa9-46bc-8ff1-7b29a9a8db51
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KYCVideoBucketListRequest'
+            example:
+              filter:
+                day: 100
+                keyword: ''
+              page: 1
+              total: 500
+        required: true
+      responses:
+        '200':
+          description: successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200_HTTP_OK'
+              example:
+                Data:
+                  list:
+                    - request_id: 10000137
+                      customer_id: 33
+                      type_action: 0
+                      status: 0
+                      step: 0
+                      full_name: Hendra Dut Effen
+                      is_senyumku: true
+                      created_date: '2019-08-16T00:00:00Z'
+                Time: '2019-08-21 10:14:04'
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+        '440':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/440_UNAUTHORIZED'
+  /kyc/video/detail/10000076:
+    get:
+      tags:
+        - Misc
+      summary: KYC Video Get Detail
+      description: Change URL param with request ID
+      operationId: KycVideoGetDetail
+      parameters:
+        - name: Session
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: df687b5c-b491-4504-965d-5681450935b5
+      responses:
+        '200':
+          description: successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200_HTTP_OK'
+              example:
+                Data: '{...}'
+                Time: '2019-08-21 10:14:04'
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+        '440':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/440_UNAUTHORIZED'
+  /kyc/verification/detail/143:
+    get:
+      tags:
+        - Misc
+      summary: KYC Video Get Detail  verification
+      description: Change URL param with request ID
+      operationId: KycVideoGetDetailVerification
+      parameters:
+        - name: Session
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: c205c5b5-bfa9-46bc-8ff1-7b29a9a8db51
+      responses:
+        '200':
+          description: successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200_HTTP_OK'
+              example:
+                Data: '{...}'
+                Time: '2019-08-21 10:14:04'
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+        '440':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/440_UNAUTHORIZED'
+  /kyc/video/submit/address/10000076:
+    post:
+      tags:
+        - Misc
+      summary: KYC Video Submit Address
+      description: Change URL param with request ID
+      operationId: KycVideoSubmitAddress
+      parameters:
+        - name: Session
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: d1b2665b-7d30-428d-ba44-2a17b4d0be02
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KYCVideoSubmitAddressRequest'
+            example:
+              addresstype: 1
+              hometype: kantor
+              address: Jln Raya Hankam no 18cc
+              rt: '001'
+              rw: '001'
+              province: BANTEN
+              city: KOTA TANGERANG
+              district: SUNGAI KAKAP
+              village: SUNGAI KAKAP DESA
+              postalcode: '78381'
+        required: true
+      responses:
+        '200':
+          description: successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200_HTTP_OK'
+              example:
+                Data: '{...}'
+                Time: '2019-08-21 10:14:04'
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+        '440':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/440_UNAUTHORIZED'
+  /kyc/video/submit/images:
+    post:
+      tags:
+        - Misc
+      summary: KYC Video Submit Image Selfie and KTP
+      description: Change URL param with request ID
+      operationId: KycVideoSubmitImageSelfieAndKtp
+      parameters:
+        - name: Session
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: c205c5b5-bfa9-46bc-8ff1-7b29a9a8db51
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KYCVideoSubmitImageSelfieandKTPRequest'
+            example:
+              base64_image_ktp: >-
+                https://i.kym-cdn.com/entries/icons/original/000/000/091/TrollFace.jpg
+              base64_image_selfie: >-
+                https://i.kym-cdn.com/entries/icons/original/000/000/091/TrollFace.jpg
+              request_id: 141
+              notes: woi
+        required: true
+      responses:
+        '200':
+          description: successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200_HTTP_OK'
+              example:
+                Data: '{...}'
+                Time: '2019-08-21 10:14:04'
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+        '440':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/440_UNAUTHORIZED'
+  /kyc/verification/list:
+    post:
+      tags:
+        - Misc
+      summary: KYC Verification Bucket List
+      description: 'TODO: Add Description'
+      operationId: KycVerificationBucketList
+      parameters:
+        - name: Session
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: 5269a1fd-03f5-4e56-96a5-41a3f65cc086
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KYCVerificationBucketListRequest'
+            example:
+              filter:
+                day: 0
+                keyword: ''
+              page: 1
+              total: 10
+        required: true
+      responses:
+        '200':
+          description: successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200_HTTP_OK'
+              example:
+                Data: '{...}'
+                Time: '2019-08-21 10:14:04'
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+        '440':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/440_UNAUTHORIZED'
+  /call/history/34:
+    get:
+      tags:
+        - Misc
+      summary: KYC Call History List
+      description: Change URL param with customer ID
+      operationId: KycCallHistoryList
+      parameters:
+        - name: Session
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: f6e5491c-0efb-49b6-8e04-a3fc2fe4eb2c
+        - name: Content-Type
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: application/x-www-form-urlencoded
+      responses:
+        '200':
+          description: successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200_HTTP_OK'
+              example:
+                Data: '{...}'
+                Time: '2019-08-21 10:14:04'
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+        '440':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/440_UNAUTHORIZED'
+  /call/history/submit:
+    post:
+      tags:
+        - Misc
+      summary: KYC Submit Call History
+      description: Change URL param with customer ID
+      operationId: KycSubmitCallHistory
+      parameters:
+        - name: Session
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: f6e5491c-0efb-49b6-8e04-a3fc2fe4eb2c
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KYCSubmitCallHistoryRequest'
+            example:
+              type_call: 1
+              type_action: 0
+              user_id: 3
+              customer_id: 34
+              notes: TESR
+              request_id: 76
+        required: true
+      responses:
+        '200':
+          description: successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200_HTTP_OK'
+              example:
+                Data: '{...}'
+                Time: '2019-08-21 10:14:04'
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+        '440':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/440_UNAUTHORIZED'
+  /kyc/images/list/1563991001847479017:
+    get:
+      tags:
+        - Misc
+      summary: /kyc/images/list
+      description: Create New IAM User
+      operationId: /kyc/images/list
+      parameters:
+        - name: Content-Type
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: application/json
+        - name: Session
+          in: header
+          description: ''
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: 3c4ecba4-4b34-41b6-bbd0-97c49cb935e9
+      responses:
+        '200':
+          description: successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200_HTTP_OK'
+              example:
+                Data: '{...}'
+                Time: '2019-08-21 10:14:04'
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400_BAD_REQUEST'
+        '440':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/440_UNAUTHORIZED'
+components:
+  schemas:
+    200_HTTP_OK:
+      properties:
+        Data:
+          type: object
+        Time:
+          type: string
+      example:
+        Data: OK
+        Time: '2019-08-21 10:14:04'
+    400_BAD_REQUEST:
+      properties:
+        Code:
+          type: integer
+        Message:
+          type: string
+        Time:
+          type: string
+      example:
+        Code: 6
+        Message: PARAM_IS_EMPTY
+        Time: '2019-08-21 10:14:04'
+    440_UNAUTHORIZED:
+      properties:
+        Code:
+          type: integer
+        Message:
+          type: string
+        Time:
+          type: string
+      example:
+        Code: 3
+        Message: UNAUTHORIZED
+        Time: '2019-08-21 10:14:04'
+    LoginCRMRequest:
+      title: LoginCRMRequest
+      required:
+        - username
+        - password
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      example:
+        username: uservideo
+        password: adminpassword
+    KYCVideoBucketListRequest:
+      title: KYCVideoBucketListRequest
+      required:
+        - filter
+        - page
+        - total
+      type: object
+      properties:
+        filter:
+          $ref: '#/components/schemas/Filter'
+        page:
+          type: integer
+          format: int32
+        total:
+          type: integer
+          format: int32
+      example:
+        filter:
+          day: 100
+          keyword: ''
+        page: 1
+        total: 500
+    Filter:
+      title: Filter
+      required:
+        - day
+        - keyword
+      type: object
+      properties:
+        day:
+          type: integer
+          format: int32
+        keyword:
+          type: string
+      example:
+        day: 100
+        keyword: ''
+    KYCVideoSubmitAddressRequest:
+      title: KYCVideoSubmitAddressRequest
+      required:
+        - addresstype
+        - hometype
+        - address
+        - rt
+        - rw
+        - province
+        - city
+        - district
+        - village
+        - postalcode
+      type: object
+      properties:
+        addresstype:
+          type: integer
+          format: int32
+        hometype:
+          type: string
+        address:
+          type: string
+        rt:
+          type: string
+        rw:
+          type: string
+        province:
+          type: string
+        city:
+          type: string
+        district:
+          type: string
+        village:
+          type: string
+        postalcode:
+          type: string
+      example:
+        addresstype: 1
+        hometype: kantor
+        address: Jln Raya Hankam no 18cc
+        rt: '001'
+        rw: '001'
+        province: BANTEN
+        city: KOTA TANGERANG
+        district: SUNGAI KAKAP
+        village: SUNGAI KAKAP DESA
+        postalcode: '78381'
+    KYCVideoSubmitImageSelfieandKTPRequest:
+      title: KYCVideoSubmitImageSelfieandKTPRequest
+      required:
+        - base64_image_ktp
+        - base64_image_selfie
+        - request_id
+        - notes
+      type: object
+      properties:
+        base64_image_ktp:
+          type: string
+        base64_image_selfie:
+          type: string
+        request_id:
+          type: integer
+          format: int32
+        notes:
+          type: string
+      example:
+        base64_image_ktp: 'https://i.kym-cdn.com/entries/icons/original/000/000/091/TrollFace.jpg'
+        base64_image_selfie: 'https://i.kym-cdn.com/entries/icons/original/000/000/091/TrollFace.jpg'
+        request_id: 141
+        notes: woi
+    KYCVerificationBucketListRequest:
+      title: KYCVerificationBucketListRequest
+      required:
+        - filter
+        - page
+        - total
+      type: object
+      properties:
+        filter:
+          $ref: '#/components/schemas/Filter'
+        page:
+          type: integer
+          format: int32
+        total:
+          type: integer
+          format: int32
+      example:
+        filter:
+          day: 0
+          keyword: ''
+        page: 1
+        total: 10
+    KYCSubmitCallHistoryRequest:
+      title: KYCSubmitCallHistoryRequest
+      required:
+        - type_call
+        - type_action
+        - user_id
+        - customer_id
+        - notes
+        - request_id
+      type: object
+      properties:
+        type_call:
+          type: integer
+          format: int32
+        type_action:
+          type: integer
+          format: int32
+        user_id:
+          type: integer
+          format: int32
+        customer_id:
+          type: integer
+          format: int32
+        notes:
+          type: string
+        request_id:
+          type: integer
+          format: int32
+      example:
+        type_call: 1
+        type_action: 0
+        user_id: 3
+        customer_id: 34
+        notes: TESR
+        request_id: 76
+  securitySchemes:
+    httpBasic:
+      type: http
+      scheme: basic
+security:
+  - httpBasic: []
+tags:
+  - name: Misc
+    description: ''
